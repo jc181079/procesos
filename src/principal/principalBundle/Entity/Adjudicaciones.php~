@@ -1,0 +1,70 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Adjudicaciones
+ *
+ * @ORM\Table(name="adjudicaciones", indexes={@ORM\Index(name="fk_adjudicaciones_proceso1_idx", columns={"proceso_idproceso"}), @ORM\Index(name="fk_adjudicaciones_empresas1_idx", columns={"empresas_idempresas"}), @ORM\Index(name="fk_adjudicaciones_tipoadjudicacion1_idx", columns={"tipoadjudicacion_idtipoadjudicacion"})})
+ * @ORM\Entity
+ */
+class Adjudicaciones
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="monto", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $monto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="observacion", type="text", nullable=true)
+     */
+    private $observacion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idadjudicaciones", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idadjudicaciones;
+
+    /**
+     * @var \principal\principalBundle\Entity\Tipoadjudicacion
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Tipoadjudicacion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipoadjudicacion_idtipoadjudicacion", referencedColumnName="idtipoadjudicacion")
+     * })
+     */
+    private $tipoadjudicaciontipoadjudicacion;
+
+    /**
+     * @var \principal\principalBundle\Entity\Proceso
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Proceso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="proceso_idproceso", referencedColumnName="idproceso")
+     * })
+     */
+    private $procesoproceso;
+
+    /**
+     * @var \principal\principalBundle\Entity\Empresas
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Empresas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="empresas_idempresas", referencedColumnName="idempresas")
+     * })
+     */
+    private $empresasempresas;
+
+
+}
+

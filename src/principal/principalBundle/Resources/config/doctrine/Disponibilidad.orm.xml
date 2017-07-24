@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Disponibilidad" table="disponibilidad">
+    <indexes>
+      <index name="fk_disponibilidad_proceso_idx" columns="proceso_idproceso"/>
+      <index name="fk_disponibilidad_recursos1_idx" columns="recursos_idrecursos"/>
+    </indexes>
+    <id name="iddisponibilidad" type="integer" column="iddisponibilidad">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="partida" type="string" column="partida" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">codigo de la partida</option>
+      </options>
+    </field>
+    <field name="denominacion" type="string" column="denominacion" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">denominacion de la partida</option>
+      </options>
+    </field>
+    <field name="monto" type="decimal" column="monto" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">monto de la partida presupuestaria</option>
+      </options>
+    </field>
+    <many-to-one field="recursosrecursos" target-entity="Recursos" fetch="LAZY">
+      <join-columns>
+        <join-column name="recursos_idrecursos" referenced-column-name="idrecursos"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="procesoproceso" target-entity="Proceso" fetch="LAZY">
+      <join-columns>
+        <join-column name="proceso_idproceso" referenced-column-name="idproceso"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Tipoadjudicacion" table="tipoadjudicacion">
+    <id name="idtipoadjudicacion" type="integer" column="idtipoadjudicacion">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="tipoadj" type="string" column="tipoadj" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Adjudicacion Total</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

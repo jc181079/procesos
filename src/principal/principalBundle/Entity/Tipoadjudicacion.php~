@@ -1,0 +1,33 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tipoadjudicacion
+ *
+ * @ORM\Table(name="tipoadjudicacion")
+ * @ORM\Entity
+ */
+class Tipoadjudicacion
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipoadj", type="string", length=45, nullable=true)
+     */
+    private $tipoadj;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idtipoadjudicacion", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idtipoadjudicacion;
+
+
+}
+

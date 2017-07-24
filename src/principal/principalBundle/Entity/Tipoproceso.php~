@@ -1,0 +1,33 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tipoproceso
+ *
+ * @ORM\Table(name="tipoproceso")
+ * @ORM\Entity
+ */
+class Tipoproceso
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tiponombre", type="string", length=100, nullable=true)
+     */
+    private $tiponombre;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idtipoproceso", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idtipoproceso;
+
+
+}
+

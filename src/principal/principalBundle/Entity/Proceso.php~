@@ -1,0 +1,206 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Proceso
+ *
+ * @ORM\Table(name="proceso", indexes={@ORM\Index(name="fk_proceso_tipoproceso1_idx", columns={"tipoproceso_idtipoproceso"}), @ORM\Index(name="fk_proceso_entesolicitante1_idx", columns={"entesolicitante_identesolicitante"}), @ORM\Index(name="fk_proceso_estatus1_idx", columns={"estatus_idestatus"}), @ORM\Index(name="fk_proceso_usuarios1_idx", columns={"usuarios_idusuarios"})})
+ * @ORM\Entity
+ */
+class Proceso
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo", type="string", length=18, nullable=true)
+     */
+    private $codigo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="denominacion", type="text", nullable=true)
+     */
+    private $denominacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="objeto", type="text", nullable=true)
+     */
+    private $objeto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="actividad", type="string", length=8, nullable=true)
+     */
+    private $actividad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mecanismo", type="text", nullable=true)
+     */
+    private $mecanismo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fsolicitud", type="date", nullable=true)
+     */
+    private $fsolicitud;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fipliego", type="date", nullable=true)
+     */
+    private $fipliego;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ffpliego", type="date", nullable=true)
+     */
+    private $ffpliego;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="facto", type="date", nullable=true)
+     */
+    private $facto;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fiaclara", type="date", nullable=true)
+     */
+    private $fiaclara;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ffaclara", type="date", nullable=true)
+     */
+    private $ffaclara;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fraclara", type="date", nullable=true)
+     */
+    private $fraclara;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="costo", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $costo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hipliegoam", type="string", length=25, nullable=true)
+     */
+    private $hipliegoam;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hfpliegopm", type="string", length=25, nullable=true)
+     */
+    private $hfpliegopm;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hiaclaraam", type="string", length=25, nullable=true)
+     */
+    private $hiaclaraam;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hfaclarapm", type="string", length=25, nullable=true)
+     */
+    private $hfaclarapm;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hraclara", type="string", length=8, nullable=true)
+     */
+    private $hraclara;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hesobre", type="string", length=25, nullable=true)
+     */
+    private $hesobre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="presupuestobase", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $presupuestobase;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idproceso", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idproceso;
+
+    /**
+     * @var \principal\principalBundle\Entity\Usuarios
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Usuarios")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuarios_idusuarios", referencedColumnName="idusuarios")
+     * })
+     */
+    private $usuariosusuarios;
+
+    /**
+     * @var \principal\principalBundle\Entity\Tipoproceso
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Tipoproceso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipoproceso_idtipoproceso", referencedColumnName="idtipoproceso")
+     * })
+     */
+    private $tipoprocesotipoproceso;
+
+    /**
+     * @var \principal\principalBundle\Entity\Estatus
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Estatus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="estatus_idestatus", referencedColumnName="idestatus")
+     * })
+     */
+    private $estatusestatus;
+
+    /**
+     * @var \principal\principalBundle\Entity\Entesolicitante
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Entesolicitante")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="entesolicitante_identesolicitante", referencedColumnName="identesolicitante")
+     * })
+     */
+    private $entesolicitanteentesolicitante;
+
+
+}
+

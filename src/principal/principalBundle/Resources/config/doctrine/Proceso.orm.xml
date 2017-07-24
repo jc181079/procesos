@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="principal\principalBundle\Entity\Proceso" table="proceso">
+    <indexes>
+      <index name="fk_proceso_tipoproceso1_idx" columns="tipoproceso_idtipoproceso"/>
+      <index name="fk_proceso_entesolicitante1_idx" columns="entesolicitante_identesolicitante"/>
+      <index name="fk_proceso_estatus1_idx" columns="estatus_idestatus"/>
+      <index name="fk_proceso_usuarios1_idx" columns="usuarios_idusuarios"/>
+    </indexes>
+    <id name="idproceso" type="integer" column="idproceso">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="codigo" type="string" column="codigo" length="18" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">codigo del proceso</option>
+      </options>
+    </field>
+    <field name="denominacion" type="text" column="denominacion" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="objeto" type="text" column="objeto" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="actividad" type="string" column="actividad" length="8" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">bienes</option>
+      </options>
+    </field>
+    <field name="mecanismo" type="text" column="mecanismo" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fsolicitud" type="date" column="fsolicitud" nullable="true"/>
+    <field name="fipliego" type="date" column="fipliego" nullable="true">
+      <options>
+        <option name="comment">fecha de inicio de entrega de pliego</option>
+      </options>
+    </field>
+    <field name="ffpliego" type="date" column="ffpliego" nullable="true">
+      <options>
+        <option name="comment">fecha final de entrega de pliego</option>
+      </options>
+    </field>
+    <field name="facto" type="date" column="facto" nullable="true">
+      <options>
+        <option name="comment">fecha del acto publico</option>
+      </options>
+    </field>
+    <field name="fiaclara" type="date" column="fiaclara" nullable="true">
+      <options>
+        <option name="comment">fecha de inicio de aclaratoria</option>
+      </options>
+    </field>
+    <field name="ffaclara" type="date" column="ffaclara" nullable="true">
+      <options>
+        <option name="comment">fecha fin de la aclaratoria</option>
+      </options>
+    </field>
+    <field name="fraclara" type="date" column="fraclara" nullable="true">
+      <options>
+        <option name="comment">fecha de respuesta de la aclaratoria</option>
+      </options>
+    </field>
+    <field name="costo" type="float" column="costo" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="comment">costo de pliego por lo general 0,00</option>
+      </options>
+    </field>
+    <field name="hipliegoam" type="string" column="hipliegoam" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">hora de inicio de entrega de pliego por la mañana</option>
+      </options>
+    </field>
+    <field name="hfpliegopm" type="string" column="hfpliegopm" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">hora final de etrega de pliego por la tarde</option>
+      </options>
+    </field>
+    <field name="hiaclaraam" type="string" column="hiaclaraam" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">hora inicio aclaratoria por la mañana</option>
+      </options>
+    </field>
+    <field name="hfaclarapm" type="string" column="hfaclarapm" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">hora fin de aclaratorias por la tarde</option>
+      </options>
+    </field>
+    <field name="hraclara" type="string" column="hraclara" length="8" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">hora de respuesta de las aclaratorias</option>
+      </options>
+    </field>
+    <field name="hesobre" type="string" column="hesobre" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">hora de intrega de sobres</option>
+      </options>
+    </field>
+    <field name="presupuestobase" type="decimal" column="presupuestobase" precision="10" scale="2" nullable="true">
+      <options>
+        <option name="comment">presupuesto base del proceso</option>
+      </options>
+    </field>
+    <many-to-one field="usuariosusuarios" target-entity="Usuarios" fetch="LAZY">
+      <join-columns>
+        <join-column name="usuarios_idusuarios" referenced-column-name="idusuarios"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="tipoprocesotipoproceso" target-entity="Tipoproceso" fetch="LAZY">
+      <join-columns>
+        <join-column name="tipoproceso_idtipoproceso" referenced-column-name="idtipoproceso"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="estatusestatus" target-entity="Estatus" fetch="LAZY">
+      <join-columns>
+        <join-column name="estatus_idestatus" referenced-column-name="idestatus"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="entesolicitanteentesolicitante" target-entity="Entesolicitante" fetch="LAZY">
+      <join-columns>
+        <join-column name="entesolicitante_identesolicitante" referenced-column-name="identesolicitante"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

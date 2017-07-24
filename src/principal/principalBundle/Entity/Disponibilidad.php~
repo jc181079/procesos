@@ -1,0 +1,67 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Disponibilidad
+ *
+ * @ORM\Table(name="disponibilidad", indexes={@ORM\Index(name="fk_disponibilidad_proceso_idx", columns={"proceso_idproceso"}), @ORM\Index(name="fk_disponibilidad_recursos1_idx", columns={"recursos_idrecursos"})})
+ * @ORM\Entity
+ */
+class Disponibilidad
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="partida", type="string", length=45, nullable=true)
+     */
+    private $partida;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="denominacion", type="string", length=100, nullable=true)
+     */
+    private $denominacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="monto", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $monto;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="iddisponibilidad", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $iddisponibilidad;
+
+    /**
+     * @var \principal\principalBundle\Entity\Recursos
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Recursos")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="recursos_idrecursos", referencedColumnName="idrecursos")
+     * })
+     */
+    private $recursosrecursos;
+
+    /**
+     * @var \principal\principalBundle\Entity\Proceso
+     *
+     * @ORM\ManyToOne(targetEntity="principal\principalBundle\Entity\Proceso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="proceso_idproceso", referencedColumnName="idproceso")
+     * })
+     */
+    private $procesoproceso;
+
+
+}
+

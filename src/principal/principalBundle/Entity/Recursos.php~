@@ -1,0 +1,33 @@
+<?php
+
+namespace principal\principalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Recursos
+ *
+ * @ORM\Table(name="recursos")
+ * @ORM\Entity
+ */
+class Recursos
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="recursonombre", type="string", length=45, nullable=true)
+     */
+    private $recursonombre;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idrecursos", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idrecursos;
+
+
+}
+
